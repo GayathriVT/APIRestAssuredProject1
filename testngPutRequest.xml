@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd"><suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/Anoop Sinha/IdeaProjects/APIRest1">
+        <classes><class name="org.example.GetMethod1"><methods><include name="getResponseBody"/>
+            <include name="getResponseBody1"/><include name="getResponseStatus"/></methods>
+        </class><class name="org.example.JsonPathEvaluator1">
+            <methods><include name="DisplayAllNodesInWeatherAPI"/>
+            </methods></class><class name="org.example.PostMethod1">
+            <methods><include name="PostRequest"/>
+            </methods></class><class name="org.example.PostMethod2">
+            <methods><include name="postmethod"/></methods>
+        </class><class name="org.example.PostMethod3">
+            <methods><include name="postmethod"/>
+            </methods></class><class name="org.example.PutRequest">
+            <methods><include name="putRequest"/></methods></class>
+            <class name="org.example.TestNgAnnotation">
+                <methods><include name="GetBooksDetails"/>
+                </methods></class><class name="org.example.TestNgex1">
+                <methods><include name="getRequest"/></methods></class></classes></test></suite>
