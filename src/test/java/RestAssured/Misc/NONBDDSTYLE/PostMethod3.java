@@ -10,7 +10,8 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class PostMethod3 {
-// Non BDD Style we need to declare Requestspecification, Response and ValidateResponse
+// For Non BDD Style, we need to declare Requestspecification, Response and ValidateResponse
+
     RequestSpecification httprequest;
     Response response;
     ValidatableResponse validate;

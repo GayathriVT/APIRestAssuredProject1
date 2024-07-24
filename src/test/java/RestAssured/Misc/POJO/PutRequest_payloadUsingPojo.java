@@ -47,6 +47,7 @@ public class PutRequest_payloadUsingPojo {
                 .when().body(booking).post()
                 .then().log().all().statusCode(200);
 
+//update booking using Patch method
         BookingPatch bookingpatch = new BookingPatch();
         bookingpatch.setFirstname("MiaMOL");
         bookingpatch.setLastname("Menon");
