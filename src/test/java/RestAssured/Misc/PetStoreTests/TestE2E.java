@@ -27,7 +27,7 @@ public class TestE2E {
 
     // Test 1: Get Request for reading all available pets
     @Test(priority = 0)
-    @Owner("Gayathri")
+    @Owner("GVT")
     @Description("Get Request for reading all available pets")
 
     public void readAllPets() {
