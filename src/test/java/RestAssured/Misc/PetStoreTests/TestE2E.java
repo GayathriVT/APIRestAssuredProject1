@@ -12,6 +12,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.testng.Assert.assertEquals;
 
 public class TestE2E {
 
@@ -19,6 +20,8 @@ public class TestE2E {
     public static Response response;
     public static ValidatableResponse validate;
     public static int id;
+    public static int responseid;
+
 
     String BASE_URL = "https://petstore.swagger.io/";
     String  BASE_PATH = "v2/pet/";
@@ -49,9 +52,9 @@ public class TestE2E {
                     "\"id\": 189,\n" +
                     "\"category\": {\n" +
                     "\"id\": 0,\n" +
-                    "\"name\": \"Chikku\"\n" +
+                    "\"name\": \"Dog\"\n" +
                     "},\n" +
-                    "\"name\": \"doggie\",\n" +
+                    "\"name\": \"Loki\",\n" +
                     "\"photoUrls\": [\n" +
                     "\"string\"\n" +
                     "],\n" +
@@ -94,7 +97,12 @@ public class TestE2E {
         validate = response.then().log().all();
         validate.statusCode(200);
         System.out.println("Pet Id " + id + " is found");
-       Assert.assertNotNull(id);
+        String name = response.then().extract().path("name");
+        id = response.then().extract().path("id");
+        responseid = response.then().extract().path("id");
+        Assert.assertEquals(responseid,id);
+        Assert.assertEquals(name,"Loki");
+        System.out.println("Pet " + name +"is " + name);
     }
 
     //Test 4 :Put request
@@ -107,9 +115,9 @@ public class TestE2E {
                     "\"id\": 189,\n" +
                     "\"category\": {\n" +
                     "\"id\": 0,\n" +
-                    "\"name\": \"Chikku\"\n" +
+                    "\"name\": \"Dog\"\n" +
                     "},\n" +
-                    "\"name\": \"doggie\",\n" +
+                    "\"name\": \"Loki\",\n" +
                     "\"photoUrls\": [\n" +
                     "\"string\"\n" +
                     "],\n" +
@@ -145,6 +153,11 @@ public class TestE2E {
         validate = response.then().log().all();
         validate.statusCode(200);
         System.out.println("Pet " + id +" is sold and deleted from the list");
+        String message = response.then().extract().path("message");
+        int no = Integer.parseInt(message);
+        Assert.assertEquals(no, id);
+        System.out.println("Pet " + message +"is " + message);
+
     }
 
     // Test 6 : Delete request
@@ -158,6 +171,7 @@ public class TestE2E {
         validate = response.then().log().all();
         validate.statusCode(404);
         System.out.println("Pet " + id +" is already deleted");
+        assertEquals(String.valueOf(response.getStatusCode()).startsWith("40"),true, "value of response code is" + response.getStatusCode());
     }
 
     //Test 7 : Get Request
